@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MP.WindowsServices.FileStor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MP.WindowsServices.Common", "MP.WindowsServices.Common\MP.WindowsServices.Common.csproj", "{DEF86286-52F8-40A2-8BB1-68FF9A4887CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MP.WindowsServices.ImagesManager", "MP.WindowsServices.ImagesSorterManager\MP.WindowsServices.ImagesManager.csproj", "{18C908CB-0402-4CFB-BB66-B4323AFB859E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MP.WindowsServices.ImagesManager", "MP.WindowsServices.ImagesManager\MP.WindowsServices.ImagesManager.csproj", "{18C908CB-0402-4CFB-BB66-B4323AFB859E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MP.WindowsServices.Builder", "MP.WindowsServices.Builder\MP.WindowsServices.Builder.csproj", "{238A89A5-2A87-4C75-8BC0-4AE371D0829B}"
 EndProject
