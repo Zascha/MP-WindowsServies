@@ -9,3 +9,7 @@ MP.WindowsServices/MP.WindowsServices.ImagesSorterManager/obj/
 MP.WindowsServices/MP.WindowsServices.OutputResultConverterManager/obj/
 MP.WindowsServices/MP.WindowsServices.ImagesManager/bin/
 MP.WindowsServices/MP.WindowsServices.ImagesManager/obj/
+MP.WindowsServices/.vs/MP.WindowsServices/v15/
+MP.WindowsServices/packages/
+MP.WindowsServices/TestConsole/bin/
+MP.WindowsServices/TestConsole/obj/

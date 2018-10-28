@@ -14,4 +14,22 @@ namespace MP.WindowsServices.Common.ConfigurationHelper
 
         public object Key => Path;
     }
+
+    internal class FileFiltersElement : ConfigurationElement
+    {
+        [ConfigurationProperty("filters")]
+        public string Filters
+        {
+            get { return (string)this["filters"]; }
+        }
+    }
+
+    internal class FileNameTemplateElement : ConfigurationElement
+    {
+        [ConfigurationProperty("template")]
+        public string Template
+        {
+            get { return (string)this["template"]; }
+        }
+    }
 }

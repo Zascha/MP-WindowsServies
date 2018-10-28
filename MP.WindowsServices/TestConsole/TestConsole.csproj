@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{238A89A5-2A87-4C75-8BC0-4AE371D0829B}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MP.WindowsServices.Builder</RootNamespace>
-    <AssemblyName>MP.WindowsServices.Builder</AssemblyName>
+    <ProjectGuid>{0DD18A9B-5BB9-435E-A1FC-3C2E4C9BC3D0}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>TestConsole</RootNamespace>
+    <AssemblyName>TestConsole</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,7 +43,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Listener.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MP.WindowsServices.Builder\MP.WindowsServices.WorkflowBuilder.csproj">
+      <Project>{238a89a5-2a87-4c75-8bc0-4ae371d0829b}</Project>
+      <Name>MP.WindowsServices.WorkflowBuilder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MP.WindowsServices.Common\MP.WindowsServices.Common.csproj">
+      <Project>{def86286-52f8-40a2-8bb1-68ff9a4887cb}</Project>
+      <Name>MP.WindowsServices.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MP.WindowsServices.FileStorageObserver\MP.WindowsServices.FileStorageObserver.csproj">
+      <Project>{ee8dd145-7129-4057-99f4-0acc72526af0}</Project>
+      <Name>MP.WindowsServices.FileStorageObserver</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MP.WindowsServices.ImagesManager\MP.WindowsServices.ImagesManager.csproj">
+      <Project>{18c908cb-0402-4cfb-bb66-b4323afb859e}</Project>
+      <Name>MP.WindowsServices.ImagesManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

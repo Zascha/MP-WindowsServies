@@ -1,7 +1,8 @@
-﻿namespace MP.WindowsServices.ImagesManager.Interfaces
+﻿using MP.WindowsServices.Common.Interfaces;
+
+namespace MP.WindowsServices.ImagesManager.Interfaces
 {
-    public interface IImagesBatchHandler
+    public interface IImagesBatchHandler : IWorkflowStepExecutor
     {
-        void ProcceddImagesBatch(object sender, NewBatchEventArgs e);
     }
 }

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{18C908CB-0402-4CFB-BB66-B4323AFB859E}</ProjectGuid>
+    <ProjectGuid>{238A89A5-2A87-4C75-8BC0-4AE371D0829B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MP.WindowsServices.ImagesManager</RootNamespace>
-    <AssemblyName>MP.WindowsServices.ImagesManager</AssemblyName>
+    <RootNamespace>MP.WindowsServices.ProcessingBuilder</RootNamespace>
+    <AssemblyName>MP.WindowsServices.ProcessingBuilder</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,24 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MigraDoc.DocumentObjectModel, Version=1.32.4334.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\PDFsharp-MigraDoc-GDI.1.32.4334.0\lib\net20\MigraDoc.DocumentObjectModel.dll</HintPath>
-    </Reference>
-    <Reference Include="MigraDoc.Rendering, Version=1.32.4334.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\PDFsharp-MigraDoc-GDI.1.32.4334.0\lib\net20\MigraDoc.Rendering.dll</HintPath>
-    </Reference>
-    <Reference Include="MigraDoc.RtfRendering, Version=1.32.4334.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\PDFsharp-MigraDoc-GDI.1.32.4334.0\lib\net20\MigraDoc.RtfRendering.dll</HintPath>
-    </Reference>
-    <Reference Include="PdfSharp, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\PDFsharp-MigraDoc-GDI.1.32.4334.0\lib\net20\PdfSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="PdfSharp.Charting, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\PDFsharp-MigraDoc-GDI.1.32.4334.0\lib\net20\PdfSharp.Charting.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,13 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ImagesBatchCleaner\ImagesBatchFilesCleaner.cs" />
-    <Compile Include="ImagesBatchHandlers\PdfImagesBatchHandler.cs" />
-    <Compile Include="ImagesBatchHandlers\TiffImagesBatchHandler.cs" />
-    <Compile Include="ImagesBatchHandlers\XpsImagesBatchHandler.cs" />
-    <Compile Include="ImagesBatchProvider\ImagesBatchProvider.cs" />
-    <Compile Include="Interfaces\IImagesBatchHandler.cs" />
-    <Compile Include="Interfaces\IImagesBatchProvider.cs" />
+    <Compile Include="FileStorageWorkflowBuilder.cs" />
+    <Compile Include="IFileStorageWorkflowBuilder.cs" />
+    <Compile Include="Extentions\WorkflowStepExecutorExtentions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -74,9 +54,6 @@
       <Project>{ee8dd145-7129-4057-99f4-0acc72526af0}</Project>
       <Name>MP.WindowsServices.FileStorageObserver</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

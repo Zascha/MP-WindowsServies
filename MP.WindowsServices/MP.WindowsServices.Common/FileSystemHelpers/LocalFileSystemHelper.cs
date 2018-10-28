@@ -63,6 +63,33 @@ namespace MP.WindowsServices.Common.FileSystemHelpers
             return Path.GetExtension(filePath);
         }
 
+        public string GetFileDirectory(string filePath)
+        {
+            if (string.IsNullOrEmpty(filePath))
+                throw new ArgumentNullException(nameof(filePath));
+
+            return Path.GetDirectoryName(filePath);
+        }
+
+        public string GetFileName(string filePath)
+        {
+            if (string.IsNullOrEmpty(filePath))
+                throw new ArgumentNullException(nameof(filePath));
+
+            return Path.GetFileName(filePath);
+        }
+
+        public void DeleteFile(string filePath)
+        {
+            if (string.IsNullOrEmpty(filePath))
+                throw new ArgumentNullException(nameof(filePath));
+
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+        }
+
         #endregion
     }
 }

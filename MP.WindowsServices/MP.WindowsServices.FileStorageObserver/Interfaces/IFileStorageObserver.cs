@@ -1,10 +1,12 @@
-﻿using System;
-using System.IO;
+﻿using MP.WindowsServices.Common;
+using System;
 
 namespace MP.WindowsServices.FileStorageObserver.Interfaces
 {
     public interface IFileStorageObserver
     {
-        event EventHandler<FileSystemEventArgs> FileAdded;
+        event EventHandler<FileStoragePipelineEventArgs> FileAdded;
+
+        void MonitorAndProceedExistingFiles();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using MP.WindowsServices.Common.ConfigurationHelper;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -9,7 +10,7 @@ namespace MP.WindowsServices.FileStorageObserver.Helpers
     {
         private const char Delimeter = ',';
 
-        private readonly AppConfiguration _appConfiguration = new AppConfiguration();
+        private readonly AppConfiguration _appConfiguration = (AppConfiguration)ConfigurationManager.GetSection("listenerSection");
 
         private IEnumerable<string> _fileExtentionFilters;
         private Regex _fileNameTemplate;
@@ -20,7 +21,7 @@ namespace MP.WindowsServices.FileStorageObserver.Helpers
             {
                 if (_fileExtentionFilters == null)
                 {
-                    _fileExtentionFilters = _appConfiguration.FileFilters
+                    _fileExtentionFilters = _appConfiguration.FileFilters.Filters
                                                              .Split(Delimeter)
                                                              .Select(item => item.Trim());
                 }
@@ -35,7 +36,7 @@ namespace MP.WindowsServices.FileStorageObserver.Helpers
             {
                 if (_fileNameTemplate == null)
                 {
-                    _fileNameTemplate = new Regex(_appConfiguration.FileNameTemplate, RegexOptions.Compiled);
+                    _fileNameTemplate = new Regex(_appConfiguration.FileNameTemplate.Template, RegexOptions.Compiled);
                 }
 
                 return _fileNameTemplate;

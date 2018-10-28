@@ -48,11 +48,8 @@
     <Compile Include="FileSystemHelpers\LocalFileSystemHelper.cs" />
     <Compile Include="FileSystemHelpers\IFileSystemHelper.cs" />
     <Compile Include="IWorkflowStepExecutor.cs" />
-    <Compile Include="PipelineDataEventArgs.cs" />
+    <Compile Include="FileStoragePipelineEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

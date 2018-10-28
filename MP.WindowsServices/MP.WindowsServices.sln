@@ -9,7 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MP.WindowsServices.Common",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MP.WindowsServices.ImagesManager", "MP.WindowsServices.ImagesManager\MP.WindowsServices.ImagesManager.csproj", "{18C908CB-0402-4CFB-BB66-B4323AFB859E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MP.WindowsServices.Builder", "MP.WindowsServices.Builder\MP.WindowsServices.Builder.csproj", "{238A89A5-2A87-4C75-8BC0-4AE371D0829B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MP.WindowsServices.WorkflowBuilder", "MP.WindowsServices.Builder\MP.WindowsServices.WorkflowBuilder.csproj", "{238A89A5-2A87-4C75-8BC0-4AE371D0829B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{0DD18A9B-5BB9-435E-A1FC-3C2E4C9BC3D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{238A89A5-2A87-4C75-8BC0-4AE371D0829B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{238A89A5-2A87-4C75-8BC0-4AE371D0829B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{238A89A5-2A87-4C75-8BC0-4AE371D0829B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DD18A9B-5BB9-435E-A1FC-3C2E4C9BC3D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DD18A9B-5BB9-435E-A1FC-3C2E4C9BC3D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DD18A9B-5BB9-435E-A1FC-3C2E4C9BC3D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DD18A9B-5BB9-435E-A1FC-3C2E4C9BC3D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

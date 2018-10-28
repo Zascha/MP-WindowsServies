@@ -5,16 +5,16 @@ namespace MP.WindowsServices.Common.ConfigurationHelper
     internal class AppConfiguration : ConfigurationSection
     {
         [ConfigurationProperty("fileFilters")]
-        public string FileFilters
+        public FileFiltersElement FileFilters
         {
-            get { return (string)this["fileFilters"]; }
+            get { return (FileFiltersElement)this["fileFilters"]; }
         }
         
 
         [ConfigurationProperty("fileNameTemplate")]
-        public string FileNameTemplate
+        public FileNameTemplateElement FileNameTemplate
         {
-            get { return (string)this["fileNameTemplate"]; }
+            get { return (FileNameTemplateElement)this["fileNameTemplate"]; }
         }
 
         [ConfigurationCollection(typeof(ObservableFolderElement), AddItemName = "folder")]

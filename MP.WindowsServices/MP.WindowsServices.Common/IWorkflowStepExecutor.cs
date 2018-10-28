@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Threading.Tasks;
 
 namespace MP.WindowsServices.Common.Interfaces
 {
     public interface IWorkflowStepExecutor
     {
-        event EventHandler<PipelineDataEventArgs> StepExecuted;
+        event EventHandler<FileStoragePipelineEventArgs> StepExecuted;
 
-        //Task ExecuteStepLogic(object sender, PipelineDataEventArgs args);
+        void HandlePreviousStepResult(object sender, FileStoragePipelineEventArgs args);
     }
 }

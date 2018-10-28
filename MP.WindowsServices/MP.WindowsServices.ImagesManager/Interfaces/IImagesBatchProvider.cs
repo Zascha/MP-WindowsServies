@@ -4,7 +4,7 @@ using System.IO;
 
 namespace MP.WindowsServices.ImagesManager.Interfaces
 {
-    public interface IImagesBatchProvider// : IWorkflowStepExecutor
+    public interface IImagesBatchProvider : IWorkflowStepExecutor
     {
     }
 }
