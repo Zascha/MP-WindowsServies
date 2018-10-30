@@ -13,3 +13,8 @@ MP.WindowsServices/.vs/MP.WindowsServices/v15/
 MP.WindowsServices/packages/
 MP.WindowsServices/TestConsole/bin/
 MP.WindowsServices/TestConsole/obj/
+MP.WindowsServices/MP.WindowsServices.ServiceInstance/bin/
+MP.WindowsServices/MP.WindowsServices.ServiceInstance/obj/
+MP.WindowsServices/MP.WindowsServices.WorkflowBuilder/bin/
+MP.WindowsServices/MP.WindowsServices.WorkflowBuilder/obj/
+obj/

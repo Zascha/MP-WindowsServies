@@ -1,5 +1,5 @@
 ﻿using MP.WindowsServices.Common;
-using MP.WindowsServices.Common.FileSystemHelpers;
+using MP.WindowsServices.Common.FileSystemHelpers.Interfaces;
 using MP.WindowsServices.Common.Interfaces;
 using System;
 using System.Linq;
@@ -17,11 +17,6 @@ namespace MP.WindowsServices.ImagesManager.ImagesBatchCleaner
 
         public event EventHandler<FileStoragePipelineEventArgs> StepExecuted;
 
-        private void OnStepExecuted(object sender, FileStoragePipelineEventArgs e)
-        {
-            StepExecuted?.Invoke(this, e);
-        }
-
         public void HandlePreviousStepResult(object sender, FileStoragePipelineEventArgs args)
         {
             if (args.BatchFilePaths == null)
@@ -30,10 +25,19 @@ namespace MP.WindowsServices.ImagesManager.ImagesBatchCleaner
             if (!args.BatchFilePaths.Any())
                 throw new ArgumentException(nameof(args.BatchFilePaths), "The pathed batch contains no files.");
 
-            foreach(var file in args.BatchFilePaths)
+            foreach (var file in args.BatchFilePaths)
             {
-                _fileSystemHelper.DeleteFile(file);
+                _fileSystemHelper.FileHelper.DeleteFile(file);
             }
         }
+
+        #region Private methods
+
+        private void OnStepExecuted(object sender, FileStoragePipelineEventArgs e)
+        {
+            StepExecuted?.Invoke(this, e);
+        }
+
+        #endregion
     }
 }

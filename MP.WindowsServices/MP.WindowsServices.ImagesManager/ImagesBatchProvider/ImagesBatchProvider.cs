@@ -10,31 +10,18 @@ namespace MP.WindowsServices.ImagesManager
 {
     public class ImagesBatchProvider : IWorkflowStepExecutor
     {
-        private readonly Timer _observingTimer;
         private readonly Regex _documentIndexNumberRegex;
 
         private List<string> _documentParts;
+        private Timer _observingTimer;
 
-        public event EventHandler<FileStoragePipelineEventArgs> StepExecuted;
-
-        public ImagesBatchProvider(int nextFileAddingLimit = 0)
+        public ImagesBatchProvider()
         {
             _documentIndexNumberRegex = new Regex("[0-9]+", RegexOptions.Compiled);
             _documentParts = new List<string>();
-
-            if(nextFileAddingLimit > 0)
-            {
-                _observingTimer = new Timer();
-                _observingTimer.Interval = nextFileAddingLimit;
-                _observingTimer.Elapsed += OnTimerElapsed;
-                _observingTimer.Enabled = true;
-            }
         }
 
-        private void OnStepExecuted(object sender, FileStoragePipelineEventArgs e)
-        {
-            StepExecuted?.Invoke(this, e);
-        }
+        public event EventHandler<FileStoragePipelineEventArgs> StepExecuted;
 
         public void HandlePreviousStepResult(object sender, FileStoragePipelineEventArgs args)
         {
@@ -46,9 +33,12 @@ namespace MP.WindowsServices.ImagesManager
             _documentParts.Add(args.FilePath);
         }
 
-        private void OnTimerElapsed(object source, ElapsedEventArgs e)
+        public void SetNextFileAddingLimitInSeconds(int nextFileAddingLimit)
         {
-            ProvideNewBatch();
+            _observingTimer = new Timer();
+            _observingTimer.Interval = nextFileAddingLimit;
+            _observingTimer.Elapsed += OnTimerElapsed;
+            _observingTimer.Enabled = true;
         }
 
         #region Private methods
@@ -82,6 +72,16 @@ namespace MP.WindowsServices.ImagesManager
         {
             OnStepExecuted(this, new FileStoragePipelineEventArgs { BatchFilePaths = _documentParts });
             _documentParts.Clear();
+        }
+
+        private void OnTimerElapsed(object source, ElapsedEventArgs e)
+        {
+            ProvideNewBatch();
+        }
+
+        private void OnStepExecuted(object sender, FileStoragePipelineEventArgs e)
+        {
+            StepExecuted?.Invoke(this, e);
         }
 
         #endregion

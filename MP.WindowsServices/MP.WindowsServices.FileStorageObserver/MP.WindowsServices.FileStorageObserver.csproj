@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GoogleDriveObserver.cs" />
     <Compile Include="Interfaces\IFileStorageObserver.cs" />
     <Compile Include="LocalFileSystemObserver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -23,13 +23,13 @@ namespace MP.WindowsServices.ProcessingBuilder
 
             var node = linkedList.First;
 
-            while(node.Next != null)
+            while (node.Next != null)
             {
                 node.Value.StepExecuted += node.Next.Value.HandlePreviousStepResult;
                 node = node.Next;
             }
 
-            _fileStorageObserver.MonitorAndProceedExistingFiles();
+            _fileStorageObserver.ObserverAndProceedExistingFiles();
         }
     }
 }

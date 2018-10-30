@@ -7,6 +7,8 @@ namespace MP.WindowsServices.FileStorageObserver.Interfaces
     {
         event EventHandler<FileStoragePipelineEventArgs> FileAdded;
 
-        void MonitorAndProceedExistingFiles();
+        void ObserverAndProceedExistingFiles();
+
+        void StopObserving();
     }
 }

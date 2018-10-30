@@ -58,11 +58,7 @@
   <ItemGroup>
     <Compile Include="ImagesBatchCleaner\ImagesBatchFilesCleaner.cs" />
     <Compile Include="ImagesBatchHandlers\PdfImagesBatchHandler.cs" />
-    <Compile Include="ImagesBatchHandlers\TiffImagesBatchHandler.cs" />
-    <Compile Include="ImagesBatchHandlers\XpsImagesBatchHandler.cs" />
     <Compile Include="ImagesBatchProvider\ImagesBatchProvider.cs" />
-    <Compile Include="Interfaces\IImagesBatchHandler.cs" />
-    <Compile Include="Interfaces\IImagesBatchProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

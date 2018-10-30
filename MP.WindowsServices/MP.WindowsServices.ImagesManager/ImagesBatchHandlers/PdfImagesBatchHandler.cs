@@ -1,13 +1,13 @@
 ﻿using MigraDoc.DocumentObjectModel;
 using MigraDoc.Rendering;
 using MP.WindowsServices.Common;
-using MP.WindowsServices.Common.FileSystemHelpers;
 using MP.WindowsServices.Common.Interfaces;
 using PdfSharp.Pdf;
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Linq;
+using MP.WindowsServices.Common.FileSystemHelpers.Interfaces;
 
 namespace MP.WindowsServices.ImagesManager.ImagesBatchHandlers
 {
@@ -32,11 +32,6 @@ namespace MP.WindowsServices.ImagesManager.ImagesBatchHandlers
         }
 
         public event EventHandler<FileStoragePipelineEventArgs> StepExecuted;
-
-        private void OnStepExecuted(object sender, FileStoragePipelineEventArgs e)
-        {
-            StepExecuted?.Invoke(this, e);
-        }
 
         public void HandlePreviousStepResult(object sender, FileStoragePipelineEventArgs args)
         {
@@ -65,7 +60,9 @@ namespace MP.WindowsServices.ImagesManager.ImagesBatchHandlers
                 throw new ArgumentNullException(nameof(filePath));
 
             var section = _pdfDocument.AddSection();
-            section.AddImage(filePath);
+
+            _fileSystemHelper.FileAccessMonitor.EnsureFileIsReadyForAccess(filePath)
+                                               .ContinueWith(prev => section.AddImage(filePath));
         }
 
         private void SavePdf(string outputPath)
@@ -82,15 +79,20 @@ namespace MP.WindowsServices.ImagesManager.ImagesBatchHandlers
 
         private string GetOutputPath(string filePath)
         {
-            var fileDirectory = _fileSystemHelper.GetFileDirectory(filePath);
-            var fileName = _onlyLettersRegex.Match(_fileSystemHelper.GetFileName(filePath)).Value.Trim();
+            var fileDirectory = _fileSystemHelper.FileHelper.GetFileDirectory(filePath);
+            var fileName = _onlyLettersRegex.Match(_fileSystemHelper.FileHelper.GetFileName(filePath)).Value.Trim();
 
             var pdfDirectoryName = Path.Combine(fileDirectory, PdfDocumentsDirectoryName);
             var pdfDocName = $"{fileName}_{DateTime.UtcNow.ToBinary()}{PdfExtention}";
 
-            _fileSystemHelper.CreateDirectoryIfNotExists(pdfDirectoryName);
+            _fileSystemHelper.DirectoryHelper.CreateDirectoryIfNotExists(pdfDirectoryName);
 
             return Path.Combine(pdfDirectoryName, pdfDocName);
+        }
+
+        private void OnStepExecuted(object sender, FileStoragePipelineEventArgs e)
+        {
+            StepExecuted?.Invoke(this, e);
         }
 
         #endregion

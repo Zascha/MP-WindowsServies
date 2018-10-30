@@ -1,95 +1,49 @@
-﻿using System;
-using System.IO;
+﻿using MP.WindowsServices.Common.FileSystemHelpers.Interfaces;
 
 namespace MP.WindowsServices.Common.FileSystemHelpers
 {
     public class LocalFileSystemHelper : IFileSystemHelper
     {
-        #region Directories methods
-
-        public bool IsValidDirectoryPath(string directoryPath)
+        private IFileAccessMonitor _fileAccessMonitor;
+        public IFileAccessMonitor FileAccessMonitor
         {
-            if (string.IsNullOrEmpty(directoryPath))
+            get
             {
-                return false;
-            }
+                if(_fileAccessMonitor == null)
+                {
+                    _fileAccessMonitor = new LocalFileAccessMonitor();
+                }
 
-            try
-            {
-                Path.GetFullPath(directoryPath);
-                return true;
-            }
-            catch (ArgumentException)
-            {
-                return false;
+                return _fileAccessMonitor;
             }
         }
 
-        public bool DoesDirectoryExist(string directoryPath)
+        private IFileHelper _fileHelper;
+        public IFileHelper FileHelper
         {
-            return !string.IsNullOrEmpty(directoryPath) && Directory.Exists(directoryPath);
-        }
-
-        public void CreateDirectoryIfNotExists(string directoryPath)
-        {
-            if (string.IsNullOrEmpty(directoryPath))
-                throw new ArgumentNullException(nameof(directoryPath));
-
-            if (!DoesDirectoryExist(directoryPath))
+            get
             {
-                Directory.CreateDirectory(directoryPath);
+                if (_fileHelper == null)
+                {
+                    _fileHelper = new LocalFileHelper();
+                }
+
+                return _fileHelper;
             }
         }
 
-        #endregion
-
-        #region File methods
-
-        public bool IsValidFilePath(string filePath)
+        private IDirectoryHelper _directoryHelper;
+        public IDirectoryHelper DirectoryHelper
         {
-            if (string.IsNullOrEmpty(filePath))
+            get
             {
-                return false;
-            }
+                if (_directoryHelper == null)
+                {
+                    _directoryHelper = new LocalDirectoryHelper();
+                }
 
-            return IsValidDirectoryPath(filePath) && string.IsNullOrEmpty(GetFileExtention(filePath));
-        }
-
-        public string GetFileExtention(string filePath)
-        {
-            if (string.IsNullOrEmpty(filePath))
-                throw new ArgumentNullException(nameof(filePath));
-
-            return Path.GetExtension(filePath);
-        }
-
-        public string GetFileDirectory(string filePath)
-        {
-            if (string.IsNullOrEmpty(filePath))
-                throw new ArgumentNullException(nameof(filePath));
-
-            return Path.GetDirectoryName(filePath);
-        }
-
-        public string GetFileName(string filePath)
-        {
-            if (string.IsNullOrEmpty(filePath))
-                throw new ArgumentNullException(nameof(filePath));
-
-            return Path.GetFileName(filePath);
-        }
-
-        public void DeleteFile(string filePath)
-        {
-            if (string.IsNullOrEmpty(filePath))
-                throw new ArgumentNullException(nameof(filePath));
-
-            if (File.Exists(filePath))
-            {
-                File.Delete(filePath);
+                return _directoryHelper;
             }
         }
-
-        #endregion
     }
 }
